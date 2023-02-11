@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from fastapi import FastAPI, Request
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from datetime import date
 from utils import pred_crop, pred_rainfall, pred_temp_hum
 
@@ -27,7 +27,7 @@ class Inputs(BaseModel):
 
 @app.post("/predict/")
 async def predict(inputs: Inputs):
-    print(inputs)
+    # print(inputs)
     nitrogen = inputs.nitrogen
     phosphorous = inputs.phosphorous
     potassium = inputs.potassium
@@ -36,11 +36,14 @@ async def predict(inputs: Inputs):
     month = inputs.month
     ph = inputs.ph
 
-    rainfall = pred_rainfall.get_rainfall(state, district, month)
+    try:
+        rainfall = pred_rainfall.get_rainfall(state, district, month)
 
-    temperature, humidity = pred_temp_hum.get_temp_hum(district)
+        temperature, humidity = pred_temp_hum.get_temp_hum(district)
 
-    prediction = pred_crop.predict_crop(
-        nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall)
+        prediction = pred_crop.predict_crop(
+            nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
     return {"result": prediction[0]}
