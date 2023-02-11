@@ -41,4 +41,4 @@ The geolocation is used to obtain the temperature and humidity values of the pla
 
 We have created an interactive interface for users to enter relevant data to get predictions for their crop.
 
-![Preview](preview.jpeg)
+![Preview](preview2.png)
