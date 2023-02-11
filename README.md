@@ -21,7 +21,11 @@ The data used to train the model was collected from the [Crop Prediction](https:
 
 ## Model
 
-The model is built using Deep Neural Networks(DNNs). The architecture we have chosen consists of 3 hidden layers with 64, 128 and 64 neurons respectively, and an output layer of 22 neurons, each corresponding to one type of crop. The algorithm was trained on the data with a 80:20 train-test split ratio. The performance metric used to evaluate the model is accuracy.
+The model is built using Deep Neural Networks(DNNs). The architecture we have chosen consists of 3 hidden layers with 64, 128 and 64 neurons respectively, and an output layer of 22 neurons, each corresponding to one type of crop. The activation function in the input and hidden layers is [SeLU](https://pytorch.org/docs/stable/generated/torch.nn.SELU.html), while the activation function for the output layer is softmax. The model was created using PyTorch framework.
+
+## Training
+
+The model was trained on the data with a 80:20 train-test split ratio. The objective(loss) function used was categorical crossentropy, and the optimizer used was SGD(stochastic gradient descent). The performance metric used to evaluate the model is accuracy. Training was done for 120 epochs.
 
 ## Results
 The model achieved an accuracy of 99% on the train data, and an accuracy of about 98% on the test data, indicating a high level of accuracy in its predictions. 
@@ -39,6 +43,6 @@ The geolocation is used to obtain the temperature and humidity values of the pla
 1. [Open Weather](http://api.openweathermap.org/)
 2. [Latitude and Logitude Finder](https://www.latlong.net)
 
-We have created an interactive interface for users to enter relevant data to get predictions for their crop.
+Further, we have created an interactive interface for users to enter relevant data to get predictions for their crop.
 
 ![Preview](preview2.png)
