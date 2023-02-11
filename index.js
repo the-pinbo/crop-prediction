@@ -809,17 +809,49 @@ $("#inputState").change(function () {
 });
 
 function predict() {
-  var nitrogen = Number(document.getElementById("nitrogen"));
+  var nitrogen = Number(document.getElementById("nitrogen").value);
 
-  var phosphorous = Number(document.getElementById("phosphorous"));
+  var phosphorous = Number(document.getElementById("phosphorous").value);
 
-  var potassium = Number(document.getElementById("potassium"));
+  var potassium = Number(document.getElementById("potassium").value);
 
-  var ph = Number(document.getElementById("ph"));
+  var ph = Number(document.getElementById("ph").value);
 
-  //   var nitrogen = Number(document.getElementById("nitrogen"));
+  var state = document.getElementById("inputState").value;
 
-  //   var nitrogen = Number(document.getElementById("nitrogen"));
+  var district = document.getElementById("inputDistrict").value;
 
-  //   var nitrogen = Number(document.getElementById("nitrogen"));
+  var month = document.getElementById("inputMonth").value;
+
+  // Get the values above, put it in a json object and send it to the backend endpoint localhost:8000/predict using fetch
+
+  var data = {
+    nitrogen: nitrogen,
+    phosphorous: phosphorous,
+    potassium: potassium,
+    ph: ph,
+    state: state,
+    district: district,
+    month: month,
+  };
+
+  fetch("http://127.0.0.1:8000/predict", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("prediction").innerHTML = data["result"];
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  console.log("resposnse", response);
+  console.log(ph);
 }

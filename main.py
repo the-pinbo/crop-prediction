@@ -1,18 +1,24 @@
 from pydantic import BaseModel
 from fastapi import FastAPI, Request
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from datetime import date
 from utils import pred_crop, pred_rainfall, pred_temp_hum
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
-
-
-app = FastAPI()
 
 
 class Inputs(BaseModel):

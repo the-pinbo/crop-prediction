@@ -113,10 +113,29 @@
             <option value="PONDICHERRY">PONDICHERRY</option>
           </select>
         </div>
+
         <div class="form-group col-md-4">
           <label for="inputDistrict">District</label>
           <select class="form-control" id="inputDistrict">
             <option value="">-- select one --</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputState">Month</label>
+          <select class="form-control" id="inputMonth">
+            <option value="JAN">JAN</option>
+            <option value="FEB">FEB</option>
+            <option value="MAR">MAR</option>
+            <option value="APR">APR</option>
+            <option value="MAY">MAY</option>
+            <option value="JUN">JUN</option>
+            <option value="JUL">JUL</option>
+            <option value="AUG">AUG</option>
+            <option value="SEP">SEP</option>
+            <option value="OCT">OCT</option>
+            <option value="NOV">NOV</option>
+            <option value="DEC">DEC</option>
           </select>
         </div>
       </form>
@@ -157,6 +176,10 @@
       <button class="btn btn-outline-success" onclick="predict()">
         Predict
       </button>
+    </div>
+
+    <div>
+      <h3 id="Result">Result : <span id="prediction"></span></h3>
     </div>
   </body>
 </html>
