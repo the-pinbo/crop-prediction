@@ -14,6 +14,7 @@ def get_prediction(x):
     normalization = np.load("model/normalization/normalization.npz")
     mean = normalization["mean"]
     std = normalization["std"]
+    print(x)
     input_vector = torch.tensor(x, dtype=torch.float32)
     input_vector = (input_vector - mean) / std
 

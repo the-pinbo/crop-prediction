@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from fastapi import FastAPI, Request
 from fastapi import FastAPI
 from datetime import date
-from utils import pred_crop, pred_humidity, pred_rainfall, pred_temp_hum
+from utils import pred_crop, pred_rainfall, pred_temp_hum
 
 app = FastAPI()
 
@@ -22,11 +22,12 @@ class Inputs(BaseModel):
     ph: float
     state: str
     district: str
-    month: date
+    month: str
 
 
-@app.post("/predict")
+@app.post("/predict/")
 async def predict(inputs: Inputs):
+    print(inputs)
     nitrogen = inputs.nitrogen
     phosphorous = inputs.phosphorous
     potassium = inputs.potassium
@@ -36,10 +37,10 @@ async def predict(inputs: Inputs):
     ph = inputs.ph
 
     rainfall = pred_rainfall.get_rainfall(state, district, month)
-    temperature = pred_temp_hum.get_temperature(state, district, month)
-    humidity = pred_humidity.get_humidity(state, district, month)
 
-    prediction = pred_crop.get_prediction(
+    temperature, humidity = pred_temp_hum.get_temp_hum(district)
+
+    prediction = pred_crop.predict_crop(
         nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall)
 
-    return {"result": prediction}
+    return {"result": prediction[0]}
