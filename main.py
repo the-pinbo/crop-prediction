@@ -40,6 +40,6 @@ async def predict(inputs: Inputs):
     humidity = pred_humidity.get_humidity(state, district, month)
 
     prediction = pred_crop.get_prediction(
-        nitrogen, phosphorous, potassium, ph, temperature, humidity, rainfall)
+        nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall)
 
     return {"result": prediction}
