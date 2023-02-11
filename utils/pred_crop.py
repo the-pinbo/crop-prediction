@@ -1,20 +1,33 @@
 from model import net
 import torch
 import pickle
+import numpy as np
 
 
-def get_prediction(nitrogen, phosphorous, potassium, ph, temperature, humidity, rainfall):
-    model = net(7, 22)
-    model.load_state_dict(torch.load('model.hdf5'))
-    x = torch.tensor([nitrogen, phosphorous, potassium,
-                     temperature, humidity, ph, rainfall])
-    prediction = model(x)
+def predict_crop(nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall):
+    return get_prediction((nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall))
 
-    with open("utils/encoder.pkl", "rb") as file:
+
+def get_prediction(x):
+    model = net.Net_64_128_64(7, 22)
+    model.load_state_dict(torch.load('model/baseline/baseline.hdf5'))
+    normalization = np.load("model/normalization/normalization.npz")
+    mean = normalization["mean"]
+    std = normalization["std"]
+    input_vector = torch.tensor(x, dtype=torch.float32)
+    input_vector = (input_vector - mean) / std
+
+    # print(input_vector.double())
+
+    prediction = model(input_vector)
+
+    with open("model/pkl_files/encoder.pkl", "rb") as file:
         encoder = pickle.load(file)
 
-    encoded_labels = encoder.inverse_transform(prediction)
-    # DEBUG
-    print("Encoded labels:", encoded_labels)
+    predicted = prediction.argmax().item()
+    encoded_labels = encoder.inverse_transform(np.array([predicted]))
 
-    return 'prediction'
+    # DEBUG
+    # print("Encoded labels:", encoded_labels)
+
+    return encoded_labels
