@@ -834,7 +834,6 @@ function predict() {
     district: district,
     month: month,
   };
-
   fetch("http://127.0.0.1:8000/predict", {
     method: "POST",
     headers: {
@@ -850,7 +849,13 @@ function predict() {
       image.src = "data/Crops/" + data.result + ".jpg";
       image.height = 250;
       console.log(image.src);
-      document.getElementById("imageContainer").appendChild(image);
+
+      imageContainer = document.getElementById("imageContainer");
+      while (imageContainer.firstChild) {
+        imageContainer.removeChild(imageContainer.firstChild);
+      }
+      imageContainer.appendChild(image);
+
       console.log("Success:", data);
     })
     .catch((error) => {
