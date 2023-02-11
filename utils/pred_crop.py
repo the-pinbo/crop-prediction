@@ -1,10 +1,10 @@
-from model import Net_64_128_64
+from model import net
 import torch
 import pickle
 
 
 def get_prediction(nitrogen, phosphorous, potassium, ph, temperature, humidity, rainfall):
-    model = Net_64_128_64(7, 22)
+    model = net(7, 22)
     model.load_state_dict(torch.load('model.hdf5'))
     x = torch.tensor([nitrogen, phosphorous, potassium,
                      temperature, humidity, ph, rainfall])
