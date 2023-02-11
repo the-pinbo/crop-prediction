@@ -7,15 +7,24 @@ This project aims to develop a machine learning based crop-prediction model to s
 
 ## Data
 
-The data used to train the model was collected from the `crop_prediction` dataset. The dataset consists of 22 different crops whose predictions are made using 7 features: nitrogen, phosphorus, potassium, and pH content of the soil, temperature, humidity and rainfall.The  `data` datset is used to cross reference geolocations to corresponding rainfall values. The data was pre-processed to ensure consistency and cleaned to remove any missing values. The data includes information on various crop types, weather patterns, and soil types.
+The data used to train the model was collected from the `crop_prediction` dataset. The dataset consists of 2200 samples of 22 different crops whose predictions are made using 7 features: nitrogen, phosphorus, potassium, and pH content of the soil, temperature, humidity and rainfall. The dataset is perfectly balanced, with each crop having 100 samples. The  `data` datset is used to cross reference geolocations to corresponding rainfall values. The data was pre-processed to ensure consistency and cleaned to remove any missing values. The data includes information on various crop types, weather patterns, and soil types. The following data visualization was performed on the crop_prediction dataset:
 
+
+* Pairwise correlation plots for the features
+   
+![data_visual1](data_visual1.png)
+
+* Correlation Matrix
+
+![correlation_matrix](correlation_matrix.png)
 
 ## Model
 
 The model is built using Deep Neural Networks(DNNs). The architecture we have chosen consists of 3 hidden layers with 64, 128 and 64 neurons respectively, and an output layer of 22 neurons, each corresponding to one type of crop. The algorithm was trained on the data with a 80:20 train-test split ratio. The performance metric used to evaluate the model is accuracy.
 
 ## Results
-The model achieved an accuracy of 99% on the train data, and an accuracy of about 98% on the test data, indicating a high level of accuracy in its predictions. The vizualization of the performance is shown as follows:
+The model achieved an accuracy of 99% on the train data, and an accuracy of about 98% on the test data, indicating a high level of accuracy in its predictions. 
+<!-- The vizualization of the performance is shown as follows: -->
 
 ## Testing
 The following data is collected from the end-user to make predictions:
