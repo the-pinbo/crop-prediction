@@ -24,7 +24,7 @@ The model is built using Deep Neural Networks(DNNs). The architecture we have ch
 
 ## Training
 
-The model was trained on the data with a 80:20 train-test split ratio. The objective(loss) function used was categorical crossentropy, and the optimizer used was SGD(stochastic gradient descent). The performance metric used to evaluate the model is accuracy. Training was done for 120 epochs.
+The model was trained on the data with a 80:20 train-test split ratio. The objective(loss) function used was categorical crossentropy, and the optimizer used was SGD(stochastic gradient descent). The performance metric used to evaluate the model is accuracy. Training was done for 100 epochs.
 
 ## Results
 
