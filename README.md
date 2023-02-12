@@ -8,14 +8,13 @@ This project aims to develop a machine learning based crop-prediction model to s
 
 ## Data
 
-The data used to train the model was collected from the [Crop Prediction](https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset) dataset. The dataset consists of 2200 samples of 22 different crops whose predictions are made using 7 features: nitrogen, phosphorus, potassium, and pH content of the soil, temperature, humidity and rainfall. The dataset is perfectly balanced, with each crop having 100 samples. The  [Rainfall in India](https://www.kaggle.com/datasets/rajanand/rainfall-in-india) datset is used to cross reference geolocations to corresponding rainfall values. The data was pre-processed to ensure consistency and cleaned to remove any missing values. The data includes information on various crop types, weather patterns, and soil types. The following data visualization was performed on the crop_prediction dataset:
+The data used to train the model was collected from the [Crop Prediction](https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset) dataset. The dataset consists of 2200 samples of 22 different crops whose predictions are made using 7 features: nitrogen, phosphorus, potassium, and pH content of the soil, temperature, humidity and rainfall. The dataset is perfectly balanced, with each crop having 100 samples. The [Rainfall in India](https://www.kaggle.com/datasets/rajanand/rainfall-in-india) datset is used to cross reference geolocations to corresponding rainfall values. The data was pre-processed to ensure consistency and cleaned to remove any missing values. The data includes information on various crop types, weather patterns, and soil types. The following data visualization was performed on the crop_prediction dataset:
 
+- Pairwise correlation plots for the features
 
-* Pairwise correlation plots for the features
-   
 ![data_visual1](data_visual1.png)
 
-* Correlation Matrix
+- Correlation Matrix
 
 ![correlation_matrix](correlation_matrix.png)
 
@@ -28,10 +27,13 @@ The model is built using Deep Neural Networks(DNNs). The architecture we have ch
 The model was trained on the data with a 80:20 train-test split ratio. The objective(loss) function used was categorical crossentropy, and the optimizer used was SGD(stochastic gradient descent). The performance metric used to evaluate the model is accuracy. Training was done for 120 epochs.
 
 ## Results
-The model achieved an accuracy of 99% on the train data, and an accuracy of about 98% on the test data, indicating a high level of accuracy in its predictions. 
+
+The model achieved an accuracy of 99% on the train data, and an accuracy of about 98% on the test data, indicating a high level of accuracy in its predictions.
+
 <!-- The vizualization of the performance is shown as follows: -->
 
 ## Testing
+
 The following data is collected from the end-user to make predictions:
 
 1. N, P, K, pH content of the soil.
