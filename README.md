@@ -46,3 +46,12 @@ The geolocation is used to obtain the temperature and humidity values of the pla
 Further, we have created an interactive interface for users to enter relevant data to get predictions for their crop.
 
 ![Preview](preview2.png)
+
+
+## Credits
+
+The contributors would like to acknowledge the guidance and technical support provided by the following individuals:
+
+1. [Chinamya Sharma](https://github.com/ChinmayaSharma-hue)
+2. [Vinayak Vatsalya](https://github.com/vinayakj02)
+3. [Muthukumar Sridharan](https://github.com/BenzeneAlcohol)
