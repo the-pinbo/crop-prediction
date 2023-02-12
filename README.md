@@ -28,7 +28,7 @@ The model was trained on the data with a 80:20 train-test split ratio. The objec
 
 ## Results
 
-The model achieved an accuracy of 99% on the train data, and an accuracy of about 98% on the test data, indicating a high level of accuracy in its predictions.
+The model achieved an accuracy of 99% on the train data, and an accuracy of about 99% on the test data, indicating a high level of accuracy in its predictions.
 
 <!-- The vizualization of the performance is shown as follows: -->
 
